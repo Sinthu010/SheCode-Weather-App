@@ -80,6 +80,11 @@ body {
   left: 0px;
 }
 
+.footer {
+  display: block;
+  margin: 0 auto;
+}
+
 .thu .fri .sat {
   position: static;
   right: 0px;
