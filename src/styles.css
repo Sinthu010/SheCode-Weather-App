@@ -1,0 +1,94 @@
+body {
+  font-family: PT Mono, monospace;
+  font-size: 18px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.search-button .current-location-button {
+  border-radius: 25px;
+  color: #5e41a7;
+  background: #fff;
+  font-size: 15px;
+  padding: 5px 6px;
+  box-shadow: 2px 2px 2px rgb(213, 213, 213);
+  transition: all 200ms ease;
+}
+.search-button:hover .current-location-button:hover {
+  color: #fff;
+  background: #5e41a7;
+}
+
+.description {
+  display: block;
+  position: relative;
+  left: 30px;
+}
+
+.search-button {
+  color: #5e41a7;
+}
+.measurements {
+  display: block;
+  position: relative;
+  right: -70px;
+}
+
+.form-group {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.central-emoji {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: -112px;
+  width: 80px;
+  text-align: center;
+  padding: 5px;
+  background-color: #5e41a7;
+  border-radius: 50%;
+  font-size: 50px;
+}
+
+.pic {
+  display: block;
+  background-color: #ae9bdf;
+  border: 4px solid #5e41a7;
+  padding: 8px;
+  margin: 20px;
+  border-radius: 60%;
+  font-size: 32px;
+}
+
+.outer {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 5px;
+  border-width: 2rem;
+  color: #5e41a7;
+  border: 4px solid #5e41a7;
+}
+
+.sun .mon .tue .wed {
+  position: static;
+  left: 0px;
+}
+
+.thu .fri .sat {
+  position: static;
+  right: 0px;
+}
+
+#celc:hover :active {
+  color: red;
+}
+
+#faren:hover :active {
+  color: red;
+}
