@@ -40,16 +40,17 @@ body {
   padding-bottom: 10px;
 }
 
-.central-emoji {
+.central-image {
   display: block;
   margin: 0 auto;
   position: relative;
-  top: -112px;
-  width: 80px;
+  top: -180px;
+  width: 100px;
   text-align: center;
   padding: 5px;
-  background-color: #5e41a7;
+  background-color: lightblue;
   border-radius: 50%;
+  border-color: #5e41a7;
   font-size: 50px;
 }
 
