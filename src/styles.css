@@ -1,6 +1,6 @@
 body {
   font-family: PT Mono, monospace;
-  font-size: 18px;
+  font-size: 10px;
   font-weight: 200;
   text-align: center;
 }
@@ -90,10 +90,17 @@ body {
   right: 0px;
 }
 
-#celc:hover :active {
+#celc:hover {
   color: red;
+  cursor: pointer;
 }
 
-#faren:hover :active {
+#faren:hover {
   color: red;
+  cursor: pointer;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
 }

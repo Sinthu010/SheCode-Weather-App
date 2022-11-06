@@ -1,5 +1,6 @@
 function getTemp(response) {
-  let tempRound = Math.round(response.data.main.temp);
+  celciusTemperature = response.data.main.temp;
+  let tempRound = Math.round(celciusTemperature);
   let humidityRound = Math.round(response.data.main.humidity);
   let windRound = Math.round(response.data.wind.speed);
   let tempElement = document.querySelector("#temp");
@@ -37,10 +38,24 @@ function fToC() {
   tempF.innerHTML = "20";
 }
 
-function cToF() {
-  let tempC = document.querySelector("#temp");
-  tempC.innerHTML = "-7";
+function convertToF(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  cButton.classList.remove("active");
+  fButton.classList.add("active");
+  let tempF = (celciusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(tempF);
 }
+
+function convertToC(event) {
+  event.preventDefault();
+  cButton.classList.add("active");
+  fButton.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celciusTemperature);
+}
+
+let celciusTemperature = null;
 
 let now = new Date();
 
@@ -78,7 +93,7 @@ locationButton.addEventListener(
 );
 
 let fButton = document.querySelector("#faren");
-fButton.addEventListener("click", fToC);
+fButton.addEventListener("click", convertToF);
 
 let cButton = document.querySelector("#celc");
-cButton.addEventListener("click", cToF);
+cButton.addEventListener("click", convertToC);
