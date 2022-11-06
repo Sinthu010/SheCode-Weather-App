@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/weather-app-top-styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card outer border-primary mb-3">
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Change city"
+                  autofocus="on"
+                  id="city-name"
+                />
+
+                <input type="submit" class="search-button" value="Search" />
+                <input
+                  type="submit"
+                  class="current-location-button"
+                  value="Current location"
+                />
+              </div>
+            </div>
+          </form>
+          <div class="card border-primary mb-3">
+            <div class="card-body">
+              <div class="row gx-8">
+                <div class="col description">
+                  <div class="row" id="city">London</div>
+                  <div class="row" id="date-time">Saturday 7:00am</div>
+                  <div class="row" id="description">Cloudy</div>
+                </div>
+                <div class="col measurements">
+                  <div class="row">
+                    <span id="temp">10</span>
+                    <span id="celc" class="active">°C</span> |
+                    <span id="faren">°F</span>
+                  </div>
+                  <div class="row">Humidity: <span id="humidity">30</span></div>
+                  <div class="row">Wind: <span id="wind">3</span>km/h</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="central-image">
+            <img src="" alt="Clear" id="icon" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <a
+        href="https://github.com/Sinthu010/SheCode-Weather-App/tree/weather-app-top"
+        target="_blank"
+        >Open-source code </a
+      >by Sinthuja Muthulingam
+    </div>
+    <script src="src/weather-app-top.js"></script>
+  </body>
+</html>
