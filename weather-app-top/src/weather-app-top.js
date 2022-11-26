@@ -1,3 +1,9 @@
+function getForecast(coordinates) {
+  let apiKey = "2abt2f6340do47141b6f92d3a14301be";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
+  axios.get(apiURL).then(displayForecast);
+}
+
 function getTemp(response) {
   celciusTemperature = response.data.main.temp;
   let tempRound = Math.round(celciusTemperature);
@@ -17,6 +23,8 @@ function getTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function changeCityName(event) {
@@ -25,7 +33,7 @@ function changeCityName(event) {
   let cityElement = document.querySelector("#city");
   let cityName = userCityForm.value;
   cityElement.innerHTML = cityName;
-  let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
+  let apiKey = "f8e6a9e3d6fde87cb38868da460b1371";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(getTemp);
 }
@@ -33,7 +41,7 @@ function changeCityName(event) {
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
+  let apiKey = "f8e6a9e3d6fde87cb38868da460b1371";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(getTemp);
 }
@@ -55,23 +63,32 @@ function convertToC(event) {
   tempElement.innerHTML = Math.round(celciusTemperature);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
   let forecastHTML = `<div class="row">`;
+  x = 0;
   days.forEach(function (day) {
+    tempMax = Math.round(response.data.daily[x].temperature.maximum);
+    tempMin = Math.round(response.data.daily[x].temperature.minimum);
+    iconURL = response.data.daily[x].condition.icon_url;
+    console.log(icon);
+
     forecastHTML =
       forecastHTML +
       `
-    <div class="col-2">
+    <div class="col-sm">
       <div class="weather-forecast-date">${day}</div>
-      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" width="50"/>
+      <img src=${iconURL} alt="" width="50"/>
       <div class="weather-forecast-temps">
-        <span class="temp-max"> 18 </span>
-        <span class="temp-min"> 12 </span>
+        <span class="temp-max"> ${tempMax} </span>
+        <span class="temp-min"> ${tempMin} </span>
       </div>
     </div>
+
   `;
+    x = x + 1;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -119,5 +136,3 @@ fButton.addEventListener("click", convertToF);
 
 let cButton = document.querySelector("#celc");
 cButton.addEventListener("click", convertToC);
-
-displayForecast();

@@ -89,3 +89,12 @@ body {
   color: green;
   font-weight: bold;
 }
+
+.temp-max {
+  font-weight: bold;
+  text-align: left;
+}
+
+.temp-min {
+  position: right;
+}
