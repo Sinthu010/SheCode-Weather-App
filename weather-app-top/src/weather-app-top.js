@@ -64,31 +64,33 @@ function convertToC(event) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
   let forecastHTML = `<div class="row">`;
   x = 0;
-  days.forEach(function (day) {
+  let date = new Date();
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  forecast.forEach(function (forecastDay) {
     tempMax = Math.round(response.data.daily[x].temperature.maximum);
     tempMin = Math.round(response.data.daily[x].temperature.minimum);
     iconURL = response.data.daily[x].condition.icon_url;
-    console.log(icon);
 
     forecastHTML =
       forecastHTML +
       `
     <div class="col-sm">
-      <div class="weather-forecast-date">${day}</div>
+      <div class="weather-forecast-date">${days[day]}</div>
       <img src=${iconURL} alt="" width="50"/>
       <div class="weather-forecast-temps">
-        <span class="temp-max"> ${tempMax} </span>
-        <span class="temp-min"> ${tempMin} </span>
+        <span class="temp-max"> ${tempMax}°C </span>
+        <span class="temp-min"> ${tempMin}°C </span>
       </div>
     </div>
 
   `;
     x = x + 1;
+    day = day + 1;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
